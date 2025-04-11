@@ -1,3 +1,8 @@
+# Material Master Data MCP
+# Version: 1.0.0
+# Author: ORBIS Consulting Shanghai Co.,Ltd
+# License: MIT
+
 params:
   type: object
   properties:

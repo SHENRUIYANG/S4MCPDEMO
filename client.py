@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Material Master Data MCP - Client
+
+Client for interacting with SAP material master data service.
+
+Version: 1.0.0
+Author: ORBIS Consulting Shanghai Co.,Ltd
+License: MIT
+Copyright (c) 2025 ORBIS Consulting Shanghai Co.,Ltd
+"""
+
 import argparse
 import json
 import sys

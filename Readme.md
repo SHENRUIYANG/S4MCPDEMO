@@ -1,5 +1,11 @@
 # Material Master Data MCP
 
+**Version:** 1.0.1  
+**Author:** ORBIS Consulting Shanghai Co.,Ltd  
+**License:** MIT  
+**Last Updated:** April 11, 2025  
+**Limitation:** This function is only for demonstration, cannot use in a productive environment. If you need, please contact the author: ruiyang.shen@orbis.de
+
 Material Master Data MCP (Master Control Program) is a service for interacting with SAP systems to provide master data query functionality. The service can run as an HTTP API server or as a tool in standard input/output mode, supporting integration with smart assistants like Cursor.
 
 ## Features
@@ -49,9 +55,14 @@ JWT_SECRET=your-secret-key  # 用于生成和验证 API Key 的密钥
 
 4. Generate API Key:
 
-```bash
-python generate_api_key.py --sap-host your.sap.server --sap-user your-username --sap-password your-password
-```
+For security reasons, the API key generation script is not included in the public repository. If you need to generate API keys for this service, please contact the author directly.
+
+API keys use JWT format and include:
+- User email
+- SAP connection information (host, port, username, password)
+- Expiration date
+
+**Note**: API keys contain sensitive connection information and should be kept secure.
 
 ## Usage
 
@@ -122,15 +133,18 @@ curl -X POST "http://localhost:5003/mcp_MM03_Description_Search" \
   -H "Authorization: Bearer your-api-key"
 ```
 
-## MCP.so Hosting
+## MCP.so Integration
 
-This service can be hosted on MCP.so for easier access and integration with various AI assistants. To deploy to MCP.so:
+This project is designed to be compatible with MCP.so hosting. The repository includes all necessary files:
 
-1. Ensure your code is pushed to GitHub at https://github.com/SHENRUIYANG/S4MCPDEMO.git
-2. Visit MCP.so and submit your repository for review
-3. Configure the required parameters (SAP_USER and SAP_PASSWORD) when prompted
+- **chatmcp.yaml**: Configuration for MCP.so integration
+- **Dockerfile**: Container image definition for deployment
+- **LICENSE**: MIT license as required for commercial-friendly deployment
 
-The service uses the `chatmcp.yaml` configuration file to specify how it should be hosted on MCP.so.
+To deploy this service to MCP.so:
+1. Submit the GitHub repository URL to the MCP.so platform
+2. The service will be reviewed and deployed by the MCP.so team
+3. Once approved, it will be available for use in the MCP Playground
 
 ## Docker Deployment
 

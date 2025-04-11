@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Example of using the SAP Material Data MCP server with Claude or other AI assistants.
+Material Master Data MCP - Example Usage
 
-This shows how to set up an MCP integration with the MCP server
-to allow AI assistants to retrieve SAP material data.
+Examples of how to use the SAP material master data service.
+
+Version: 1.0.0
+Author: ORBIS Consulting Shanghai Co.,Ltd
+License: MIT
+Copyright (c) 2025 ORBIS Consulting Shanghai Co.,Ltd
 """
 import os
 import argparse

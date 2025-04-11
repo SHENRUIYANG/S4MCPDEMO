@@ -49,4 +49,7 @@ Thumbs.db
 # Project specific
 .env
 *.log
-logs/ 
+logs/
+
+# Security sensitive files
+generate_api_key.py 

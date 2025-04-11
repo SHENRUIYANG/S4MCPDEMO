@@ -1,3 +1,8 @@
+# Material Master Data MCP
+# Version: 1.0.0
+# Author: ORBIS Consulting Shanghai Co.,Ltd
+# License: MIT
+
 FROM python:3.9-slim
 
 WORKDIR /app
