@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - ./notes:/app/notes
+    environment:
+      - SAP_BASE_URL=https://my200816.s4hana.sapcloud.cn
+      - SAP_USERNAME=ORB_COM
+      - SAP_PASSWORD=mzXkvXJeQaBgKEVNZn6ffaJnj~KcADrMgnGalwgH
+      - LOG_LEVEL=INFO 

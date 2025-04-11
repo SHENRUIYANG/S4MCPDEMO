@@ -1,0 +1,192 @@
+
+GET:
+https://my200816.s4hana.sapcloud.cn:443/sap/opu/odata4/sap/api_product/srvd_a2x/sap/product/0002/ProductDescription?$top=50&$filter=contains(ProductDescription%2C'%E5%BA%8F%E5%88%97%E5%8F%B7')
+
+{
+  "@odata.context": "$metadata#ProductDescription",
+  "@odata.metadataEtag": "W/\"20250329190321\"",
+  "value": [
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "BELLA-10",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FELIXFIN",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG0611",
+      "Language": "ZH",
+      "ProductDescription": "成品 1，ETO-DI，PD，序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202503210122210000000C~20250321012221.0000000\"",
+      "Product": "FG126",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411040418150000000C~20241104041815.0000000\"",
+      "Product": "FG126_V01",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG126-02",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG126-07",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG126-11",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG126-12",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG126-14",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411150730300000000C~20241115073030.0000000\"",
+      "Product": "FG126-8",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411021025100000000C~20241102102510.0000000\"",
+      "Product": "FG126-WZQ",
+      "Language": "ZH",
+      "ProductDescription": "FIN126-WZQ,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202501200900420000000C~20250120090042.0000000\"",
+      "Product": "FG126-ZQ",
+      "Language": "ZH",
+      "ProductDescription": "FIN126,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202412221126190000000C~20241222112619.0000000\"",
+      "Product": "FG126F",
+      "Language": "ZH",
+      "ProductDescription": "FIN126F,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410300151470000000C~20241030015147.0000000\"",
+      "Product": "FG126F-6",
+      "Language": "ZH",
+      "ProductDescription": "FG126F-6,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410300319330000000C~20241030031933.0000000\"",
+      "Product": "FG126F-WZQ",
+      "Language": "ZH",
+      "ProductDescription": "FG126F-WZQ,MTS-DI,PD,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG426",
+      "Language": "ZH",
+      "ProductDescription": "FIN426,MTS-DI,PD,序列号,仓位管理 PSA",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG526",
+      "Language": "ZH",
+      "ProductDescription": "FIN526,MTS-DI,PD,AdvProdInt,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG626",
+      "Language": "ZH",
+      "ProductDescription": "FIN626,MTS-DI,PD,序列号,仓位管理 PSA",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG726",
+      "Language": "ZH",
+      "ProductDescription": "FIN726，MTS-DI，PD，AdvProdInt，序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202411240744160000000C~20241124074416.0000000\"",
+      "Product": "FG826",
+      "Language": "ZH",
+      "ProductDescription": "FIN826,MTS-DI,PD,AdvProdInt,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410200340010000000C~20241020034001.0000000\"",
+      "Product": "RM524",
+      "Language": "ZH",
+      "ProductDescription": "RAW524,VB,消耗,单一订单,序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410200334200000000C~20241020033420.0000000\"",
+      "Product": "SRV_06",
+      "Language": "ZH",
+      "ProductDescription": "含序列号参数文件的库存备件",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410200336040000000C~20241020033604.0000000\"",
+      "Product": "TG0016",
+      "Language": "ZH",
+      "ProductDescription": "贸易货物 0016，地区流程，序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410200336040000000C~20241020033604.0000000\"",
+      "Product": "TG0018",
+      "Language": "ZH",
+      "ProductDescription": "贸易货物 0018，地区流程，序列号",
+      "SAP__Messages": []
+    },
+    {
+      "@odata.etag": "W/\"SADL-202410200330290000000C~20241020033029.0000000\"",
+      "Product": "TG20",
+      "Language": "ZH",
+      "ProductDescription": "贸易货物 20，记录点，序列号",
+      "SAP__Messages": []
+    }
+  ]
+}

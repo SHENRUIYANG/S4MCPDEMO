@@ -1,0 +1,1026 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Chart of Accounts - Read",
+    "version": "1.0.0",
+    "description": "The service enables you to retrieve chart of accounts and their names in the respective language."
+  },
+  "externalDocs": {
+    "description": "Business Documentation",
+    "url": "https://help.sap.com/http.svc/ahp2/SAP_S4HANA_CLOUD/2502.latest/EN/50/e66ad51f064c23aceb9513891663ef/frameset.htm"
+  },
+  "x-sap-api-type": "ODATA",
+  "x-sap-shortText": "Read chart of accounts master data using this inbound service",
+  "x-sap-software-min-version": "2502.1",
+  "x-sap-ext-overview": [
+    {
+      "name": "Communication Scenario",
+      "values": [
+        {
+          "text": "SAP Analytics Cloud for Planning Integration (SAP_COM_0087)",
+          "format": "plain"
+        },
+        {
+          "text": "Finance - Cloud Consolidation Data Collection Integration (SAP_COM_0241)",
+          "format": "plain"
+        },
+        {
+          "text": "Excise Tax Integration (SAP_COM_0568)",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Scope Items",
+      "values": [
+        {
+          "text": "[Import Connection Setup with SAP Analytics Cloud (1YB)](https://me.sap.com/processnavigator/SolP/1YB \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Group Reporting - Data from SAP Group Reporting Data Collection (287)](https://me.sap.com/processnavigator/SolP/287 \" Link To BP \")",
+          "format": "markdown"
+        },
+        {
+          "text": "[Enablement of SAP Excise Tax Management (4LO)](https://me.sap.com/processnavigator/SolP/4LO \" Link To BP \")",
+          "format": "markdown"
+        }
+      ]
+    },
+    {
+      "name": "Authentication Methods",
+      "values": [
+        {
+          "text": "x509",
+          "format": "plain"
+        }
+      ]
+    },
+    {
+      "name": "Business Object",
+      "values": [
+        {
+          "text": "Journal Entry",
+          "format": "plain"
+        }
+      ]
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://{host}:{port}/sap/opu/odata/sap/API_CHARTOFACCOUNTS_SRV",
+      "variables": {
+        "host": {
+          "default": ""
+        },
+        "port": {
+          "default": ""
+        }
+      }
+    },
+    {
+      "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_CHARTOFACCOUNTS_SRV"
+    }
+  ],
+  "x-sap-extensible": {
+    "supported": "no"
+  },
+  "tags": [
+    {
+      "name": "Chart of Accounts"
+    },
+    {
+      "name": "Chart of Accounts Text"
+    }
+  ],
+  "paths": {
+    "/A_ChartOfAccounts": {
+      "get": {
+        "summary": "Reads the items of all chart of accounts.",
+        "description": "Reads the charts of accounts available in your system.",
+        "tags": [
+          "Chart of Accounts"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "ChartOfAccounts desc",
+                  "CorporateGroupChartOfAccounts",
+                  "CorporateGroupChartOfAccounts desc",
+                  "ChartOfAcctsIsBlocked",
+                  "ChartOfAcctsIsBlocked desc",
+                  "MaintenanceLanguage",
+                  "MaintenanceLanguage desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "CorporateGroupChartOfAccounts",
+                  "ChartOfAcctsIsBlocked",
+                  "MaintenanceLanguage",
+                  "to_Text"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_Text"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Wrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "Collection of A_ChartOfAccountsType",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_ChartOfAccounts('{ChartOfAccounts}')": {
+      "parameters": [
+        {
+          "name": "ChartOfAccounts",
+          "in": "path",
+          "required": true,
+          "description": "Chart of Accounts",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        }
+      ],
+      "get": {
+        "summary": "Reads a chart of accounts by key.",
+        "description": "Reads a selected chart of accounts for the provided key.",
+        "tags": [
+          "Chart of Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "CorporateGroupChartOfAccounts",
+                  "ChartOfAcctsIsBlocked",
+                  "MaintenanceLanguage",
+                  "to_Text"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_Text"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_ChartOfAccountsType",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_ChartOfAccounts('{ChartOfAccounts}')/to_Text": {
+      "parameters": [
+        {
+          "name": "ChartOfAccounts",
+          "in": "path",
+          "required": true,
+          "description": "Chart of Accounts",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        }
+      ],
+      "get": {
+        "summary": "Reads the texts of a specific chart of accounts.",
+        "description": "Reads the texts and related fields from a specific chart of accounts.",
+        "tags": [
+          "Chart of Accounts",
+          "Chart of Accounts Text"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "ChartOfAccounts desc",
+                  "Language",
+                  "Language desc",
+                  "ChartOfAccountsName",
+                  "ChartOfAccountsName desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "Language",
+                  "ChartOfAccountsName",
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Wrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "Collection of A_ChartOfAccountsTextType",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_ChartOfAccountsText": {
+      "get": {
+        "summary": "Reads the texts of all chart of accounts.",
+        "description": "Reads the texts and related fields from all chart of accounts. The related fields include the language and ID.",
+        "tags": [
+          "Chart of Accounts Text"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "ChartOfAccounts desc",
+                  "Language",
+                  "Language desc",
+                  "ChartOfAccountsName",
+                  "ChartOfAccountsName desc"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "Language",
+                  "ChartOfAccountsName",
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Wrapper",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "title": "Collection of A_ChartOfAccountsTextType",
+                      "type": "object",
+                      "properties": {
+                        "__count": {
+                          "$ref": "#/components/schemas/count"
+                        },
+                        "results": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_ChartOfAccountsText(ChartOfAccounts='{ChartOfAccounts}',Language='{Language}')": {
+      "parameters": [
+        {
+          "name": "ChartOfAccounts",
+          "in": "path",
+          "required": true,
+          "description": "Chart of Accounts",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "Language",
+          "in": "path",
+          "required": true,
+          "description": "Language Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 2
+          }
+        }
+      ],
+      "get": {
+        "summary": "Reads the texts of a specific chart of accounts for a specific language and chart of accounts ID.",
+        "description": "Reads the texts and related fields of a specific chart of accounts. The related fields include the language and chart of accounts ID.",
+        "tags": [
+          "Chart of Accounts Text"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "Language",
+                  "ChartOfAccountsName",
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_ChartOfAccounts"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_ChartOfAccountsTextType",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/A_ChartOfAccountsText(ChartOfAccounts='{ChartOfAccounts}',Language='{Language}')/to_ChartOfAccounts": {
+      "parameters": [
+        {
+          "name": "ChartOfAccounts",
+          "in": "path",
+          "required": true,
+          "description": "Chart of Accounts",
+          "schema": {
+            "type": "string",
+            "maxLength": 4
+          }
+        },
+        {
+          "name": "Language",
+          "in": "path",
+          "required": true,
+          "description": "Language Key",
+          "schema": {
+            "type": "string",
+            "maxLength": 2
+          }
+        }
+      ],
+      "get": {
+        "summary": "Reads the specific chart of accounts related to the text item.",
+        "description": "Reads the chart of accounts and its fields which is related to the specific text for language and ID.",
+        "tags": [
+          "Chart of Accounts Text",
+          "Chart of Accounts"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "ChartOfAccounts",
+                  "CorporateGroupChartOfAccounts",
+                  "ChartOfAcctsIsBlocked",
+                  "MaintenanceLanguage",
+                  "to_Text"
+                ]
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities, see [Expand](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=63)",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "to_Text"
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "A_ChartOfAccountsType",
+                  "type": "object",
+                  "properties": {
+                    "d": {
+                      "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/$batch": {}
+  },
+  "components": {
+    "schemas": {
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType": {
+        "type": "object",
+        "properties": {
+          "ChartOfAccounts": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Chart of Accounts"
+          },
+          "CorporateGroupChartOfAccounts": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Group Chart of Accts"
+          },
+          "ChartOfAcctsIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Indicator: Is the Chart of Accounts Blocked ?"
+          },
+          "MaintenanceLanguage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Maint.Language",
+            "description": "Maintenance Language for the Chart of Accounts"
+          },
+          "to_Text": {
+            "type": "object",
+            "properties": {
+              "results": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType"
+                }
+              }
+            }
+          }
+        },
+        "title": "Chart of Accounts"
+      },
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType-create": {
+        "type": "object",
+        "properties": {
+          "ChartOfAccounts": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Chart of Accounts"
+          },
+          "CorporateGroupChartOfAccounts": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Group Chart of Accts"
+          },
+          "ChartOfAcctsIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Indicator: Is the Chart of Accounts Blocked ?"
+          },
+          "MaintenanceLanguage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Maint.Language",
+            "description": "Maintenance Language for the Chart of Accounts"
+          },
+          "to_Text": {
+            "type": "object",
+            "properties": {
+              "results": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType-create"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "ChartOfAccounts"
+        ],
+        "title": "Chart of Accounts (for create)"
+      },
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType-update": {
+        "type": "object",
+        "properties": {
+          "CorporateGroupChartOfAccounts": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 4,
+            "title": "Group Chart of Accts"
+          },
+          "ChartOfAcctsIsBlocked": {
+            "type": "boolean",
+            "nullable": true,
+            "title": "Blocked",
+            "description": "Indicator: Is the Chart of Accounts Blocked ?"
+          },
+          "MaintenanceLanguage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 2,
+            "title": "Maint.Language",
+            "description": "Maintenance Language for the Chart of Accounts"
+          }
+        },
+        "title": "Chart of Accounts (for update)"
+      },
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType": {
+        "type": "object",
+        "properties": {
+          "ChartOfAccounts": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Chart of Accounts"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "ChartOfAccountsName": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50,
+            "title": "Description",
+            "description": "Chart of Accounts Description"
+          },
+          "to_ChartOfAccounts": {
+            "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType"
+          }
+        },
+        "title": "Chart of Accounts Text"
+      },
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType-create": {
+        "type": "object",
+        "properties": {
+          "ChartOfAccounts": {
+            "type": "string",
+            "maxLength": 4,
+            "title": "Chart of Accounts"
+          },
+          "Language": {
+            "type": "string",
+            "maxLength": 2,
+            "title": "Language Key"
+          },
+          "ChartOfAccountsName": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50,
+            "title": "Description",
+            "description": "Chart of Accounts Description"
+          },
+          "to_ChartOfAccounts": {
+            "$ref": "#/components/schemas/API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsType-create"
+          }
+        },
+        "required": [
+          "ChartOfAccounts",
+          "Language"
+        ],
+        "title": "Chart of Accounts Text (for create)"
+      },
+      "API_CHARTOFACCOUNTS_SRV.A_ChartOfAccountsTextType-update": {
+        "type": "object",
+        "properties": {
+          "ChartOfAccountsName": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50,
+            "title": "Description",
+            "description": "Chart of Accounts Description"
+          }
+        },
+        "title": "Chart of Accounts Text (for update)"
+      },
+      "count": {
+        "type": "string",
+        "description": "The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option."
+      },
+      "error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "object",
+                "required": [
+                  "lang",
+                  "value"
+                ],
+                "properties": {
+                  "lang": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "innererror": {
+                "type": "object",
+                "description": "The structure of this object is service-specific"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "top": {
+        "name": "$top",
+        "in": "query",
+        "description": "Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "example": 50
+      },
+      "skip": {
+        "name": "$skip",
+        "in": "query",
+        "description": "Skip the first n items, see [Paging - Skip](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)",
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "count": {
+        "name": "$inlinecount",
+        "in": "query",
+        "description": "Include count of items, see [Inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67)",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "allpages",
+            "none"
+          ]
+        }
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/error"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "OAuth2Auth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "scopes": {
+              "API_CHARTOFACCOUNTS_SRV_0001": ""
+            },
+            "refreshUrl": "https://{host}:{port}",
+            "authorizationUrl": "https://{host}:{port}",
+            "tokenUrl": "https://{host}:{port}"
+          }
+        }
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2Auth": [
+        "API_CHARTOFACCOUNTS_SRV_0001"
+      ]
+    },
+    {
+      "BasicAuth": []
+    }
+  ]
+}
