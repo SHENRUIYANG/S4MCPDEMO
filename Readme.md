@@ -10,6 +10,8 @@ Material Master Data MCP (Master Control Program) is a service for interacting w
 - **Multilingual Support**: Supports querying material descriptions in different languages (Chinese, English, German, etc.)
 - **Type Safety**: Uses Pydantic models for input validation
 - **Complete API Documentation**: Built-in API documentation using OpenAPI specification
+- **MCP.so Hosting Support**: Can be deployed to MCP.so for cloud-based access
+- **API Key Authentication**: Uses JWT for secure authentication
 
 ## Installation
 
@@ -42,6 +44,13 @@ SAP_HOST=your_sap_host
 SAP_PORT=your_sap_port
 SAP_USER=your_sap_username
 SAP_PASSWORD=your_sap_password
+JWT_SECRET=your-secret-key  # 用于生成和验证 API Key 的密钥
+```
+
+4. Generate API Key:
+
+```bash
+python generate_api_key.py --sap-host your.sap.server --sap-user your-username --sap-password your-password
 ```
 
 ## Usage
@@ -61,6 +70,14 @@ python MM03_MCP.py --mode=stdio
 ```
 
 This will start the program and wait for commands on standard input, suitable for integration with smart assistants like Cursor.
+
+### Start as REST Server (for MCP.so)
+
+```bash
+python MM03_MCP.py --mode=rest --host=0.0.0.0 --port=5003 --endpoint=/rest
+```
+
+This will start a REST server suitable for MCP.so hosting.
 
 ### API Endpoints
 
@@ -83,7 +100,8 @@ After starting the HTTP server, you can view the complete API documentation by v
 ```bash
 curl -X POST "http://localhost:5003/mcp_MM03_BasicData" \
   -H "Content-Type: application/json" \
-  -d '{"material": "FG126"}'
+  -d '{"material": "FG126"}' \
+  -H "Authorization: Bearer your-api-key"
 ```
 
 ### Search Materials by Description
@@ -91,7 +109,8 @@ curl -X POST "http://localhost:5003/mcp_MM03_BasicData" \
 ```bash
 curl -X POST "http://localhost:5003/mcp_MM03_DescToMaterial" \
   -H "Content-Type: application/json" \
-  -d '{"description": "serial", "language": "EN"}'
+  -d '{"description": "serial", "language": "EN"}' \
+  -H "Authorization: Bearer your-api-key"
 ```
 
 ### Get Material Description in a Specific Language
@@ -99,7 +118,30 @@ curl -X POST "http://localhost:5003/mcp_MM03_DescToMaterial" \
 ```bash
 curl -X POST "http://localhost:5003/mcp_MM03_Description_Search" \
   -H "Content-Type: application/json" \
-  -d '{"material": "FG126", "language": "EN"}'
+  -d '{"material": "FG126", "language": "EN"}' \
+  -H "Authorization: Bearer your-api-key"
+```
+
+## MCP.so Hosting
+
+This service can be hosted on MCP.so for easier access and integration with various AI assistants. To deploy to MCP.so:
+
+1. Ensure your code is pushed to GitHub at https://github.com/SHENRUIYANG/S4MCPDEMO.git
+2. Visit MCP.so and submit your repository for review
+3. Configure the required parameters (SAP_USER and SAP_PASSWORD) when prompted
+
+The service uses the `chatmcp.yaml` configuration file to specify how it should be hosted on MCP.so.
+
+## Docker Deployment
+
+You can also run the service in a Docker container:
+
+```bash
+# Build the Docker image
+docker build -t mcp/mm03-mcp .
+
+# Run the container
+docker run -i --rm -e SAP_USER=your_username -e SAP_PASSWORD=your_password mcp/mm03-mcp
 ```
 
 ## API Details

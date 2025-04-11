@@ -1,0 +1,69 @@
+params:
+  type: object
+  properties:
+    jwt_secret:
+      type: string
+      description: JWT secret key for API key validation
+      default: "your-secret-key"
+    SAP_HOST:
+      type: string
+      description: SAP S/4HANA host address
+    SAP_PORT:
+      type: string
+      description: SAP S/4HANA port
+      default: "443"
+    SAP_USER:
+      type: string
+      description: SAP S/4HANA username
+    SAP_PASSWORD:
+      type: string
+      description: SAP S/4HANA password
+  required:
+    - jwt_secret
+
+rest:
+  name: mm03-mcp
+  port: 5003
+  endpoint: /rest
+
+npx:
+  command: python MM03_MCP.py --mode=stdio
+  config:
+    mcpServers:
+      mm03-mcp:
+        command: python
+        args:
+          - MM03_MCP.py
+          - --mode=stdio
+        env:
+          JWT_SECRET: "{jwt_secret}"
+          SAP_HOST: "{SAP_HOST}"
+          SAP_PORT: "{SAP_PORT}"
+          SAP_USER: "{SAP_USER}"
+          SAP_PASSWORD: "{SAP_PASSWORD}"
+
+docker:
+  command:
+    | docker run -i --rm -e SAP_USER={SAP_USER} -e SAP_PASSWORD={SAP_PASSWORD} mcp/mm03-mcp
+  config:
+    | {
+        "mcpServers": {
+          "mm03-mcp": {
+            "command": "docker",
+            "args": [
+              "run",
+              "-i",
+              "--rm",
+              "-e",
+              "SAP_USER={SAP_USER}",
+              "-e",
+              "SAP_PASSWORD={SAP_PASSWORD}",
+              "mcp/mm03-mcp"
+            ],
+            "env": {
+              "SAP_USER": "YOUR_SAP_USER_HERE",
+              "SAP_PASSWORD": "YOUR_SAP_PASSWORD_HERE"
+            }
+          }
+        }
+      } 
